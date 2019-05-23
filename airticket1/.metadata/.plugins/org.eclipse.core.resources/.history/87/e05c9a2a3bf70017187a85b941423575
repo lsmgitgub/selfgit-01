@@ -1,0 +1,19 @@
+package com.isoftstone.airticket.repository;
+
+import org.springframework.stereotype.Repository;
+
+import com.isoftstone.airticket.bean.UserInfo;
+
+
+public interface UserDao {
+	
+	public UserInfo findUserByName(String userName);
+
+	
+	public void insertUser(UserInfo userInfo);
+	
+	public void updateUser(UserInfo userInfo);
+	
+	
+}
+

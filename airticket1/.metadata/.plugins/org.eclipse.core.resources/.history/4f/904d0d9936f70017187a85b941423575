@@ -1,0 +1,5 @@
+package com.isoftstone.airticket.repository;
+
+public interface AirLineDao {
+
+}

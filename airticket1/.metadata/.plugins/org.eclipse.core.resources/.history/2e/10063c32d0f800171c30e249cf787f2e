@@ -1,0 +1,88 @@
+package com.isoftstone.airticket.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.isoftstone.airticket.bean.Advice;
+import com.isoftstone.airticket.service.AdviceService;
+
+@Controller
+public class AdviceController {
+	
+	@Autowired
+	private AdviceService adviceService;
+	
+	@RequestMapping("/listAdvice")
+	public String listAdvice(Model model,@RequestParam("userid") int userid){
+		
+		System.out.println("in listAdvice....");
+		System.out.println("userId:"+userid);
+		
+		List<Advice> advices = adviceService.getAdviceList(userid);
+		
+		
+		model.addAttribute("advices",advices);
+		
+		
+		return "myAdviceList";
+		
+		
+	}
+	
+	@RequestMapping("toAddAdvice")
+	public String toAddAdvice(Model model){
+		
+		
+		return "toAddAdvice";
+		
+	}
+	
+	@RequestMapping("saveAdvice")
+	public String saveAdvice(Model model,@ModelAttribute("advice") Advice advice){
+		
+		System.out.println("advice:"+advice);
+		
+		if(advice.getId() == 0){
+			adviceService.addAdvice(advice);
+		}else{
+			adviceService.modifyAdvice(advice);
+		}
+		
+		
+		
+		return "forward:/listAdvice.do?userid="+advice.getUserId();
+		
+	}
+	
+	@RequestMapping("showAdvice")
+	public String showAdvice(Model model,@RequestParam("adviceId") int adviceId){
+		
+		Advice advice = adviceService.getAdviceById(adviceId);
+		model.addAttribute("advice", advice);
+		return "showAdvice";
+		
+	}
+	@RequestMapping("toEditAdvice")
+	public String toEditAdvice(Model model,@RequestParam("adviceId") int adviceId){
+		Advice advice = adviceService.getAdviceById(adviceId);
+		model.addAttribute("advice", advice);
+		return "editAdvice";
+	}
+	
+	@RequestMapping("delAdvice")
+	public String delAdvice(@RequestParam("adviceId") int id,@RequestParam("userId") int userId){
+		
+		
+		adviceService.delAdvice(id);
+		return "forward:/listAdvice.do?userid="+userId;
+	}
+
+}

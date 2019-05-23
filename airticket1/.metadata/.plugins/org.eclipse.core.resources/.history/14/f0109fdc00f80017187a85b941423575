@@ -1,0 +1,65 @@
+package com.isoftstone.airticket.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.isoftstone.airticket.bean.AirLine;
+import com.isoftstone.airticket.bean.OrderInfo;
+import com.isoftstone.airticket.service.AirLineService;
+import com.isoftstone.airticket.service.OrderService;
+
+@Controller
+public class OrderController {
+	
+	@Autowired
+	private AirLineService airLineService;
+	@Autowired
+	private OrderService orderService;
+	
+	@RequestMapping("orderTicket")
+	public String toOrderTicket(Model model,@RequestParam("airLineId") int airLineId){
+		
+		System.out.println(airLineId);
+		
+		AirLine airLine = airLineService.queryAirLine(airLineCondition);
+		
+		model.addAttribute("airLine", airLine);
+	
+		return "orderTicket";
+	}
+	
+	@RequestMapping("saveOrder")
+	public String saveOrder(Model model,@RequestParam("userId") int userId,@RequestParam("airLineId") int airLineId){
+		
+		System.out.println("to show OrderList");
+		
+		OrderInfo order = new OrderInfo();
+		order.setUserId(userId);
+		order.setAirLineId(airLineId);
+
+		orderService.saveOrder(order);
+		return "forward:/myorder";
+		
+	}
+	
+	
+	@RequestMapping("myorder")
+	public String showOrderList(Model model,@RequestParam("userId") int userId){
+		
+		List<OrderInfo> orders = orderService.queryOrderList(userId);
+		
+		System.out.println(orders.size());
+		model.addAttribute("orders",orders);
+		
+		
+		System.out.println("jump to myorder page....");
+		
+		return "showOrderList";
+	}
+
+}

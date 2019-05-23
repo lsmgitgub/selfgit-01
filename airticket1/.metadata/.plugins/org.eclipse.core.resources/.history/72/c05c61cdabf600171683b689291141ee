@@ -1,0 +1,31 @@
+package com.isoftstone.airticket.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.isoftstone.airticket.bean.Advice;
+import com.isoftstone.airticket.service.AdviceService;
+
+@Controller
+public class AdviceController {
+	
+@Autowired
+public AdviceService adviceService;
+
+@RequestMapping("/listAdvice")
+public String listAdvice(Model model,@RequestParam("userid")int userid){
+	System.out.println("in listAdvice....");
+	System.out.println("userId:"+userid);
+	/*
+	List<Advice> advices=adviceService.getAdviceList(userid);
+		System.out.println(advices.size());
+	 * 
+	 * */
+	return "myAdviceList";
+}
+}

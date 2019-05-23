@@ -1,0 +1,9 @@
+package com.isoftstone.airticket.repository;
+
+import java.util.List;
+
+import com.isoftstone.airticket.bean.AirLine;
+
+public interface AirLineDao {
+				public List<AirLine> findAirLine(AirLine airLine);
+}		

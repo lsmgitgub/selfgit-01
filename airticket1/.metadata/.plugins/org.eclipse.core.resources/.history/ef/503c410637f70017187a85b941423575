@@ -1,0 +1,5 @@
+package com.isoftstone.airticket.service.impl;
+
+public class AirLineServiceImpl {
+
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isoftstone.airticket.repository.AdviceDao">
+
+    <resultMap type="Advice" id="adviceResult">
+        <id property="id" column="advice_id"/>
+        <result property="content" column="adv_content"/>
+        <result property="advTime" column="adv_time"/>  
+        <result property="userId" column="user_id"/> 
+    
+    </resultMap>
+    
+     <select id="findAdeviceList" resultMap="adviceResult" resultType="Advice" parameterType="int">
+     select advice_id,advice_content,advice_time,user_id from t_advice where user_id=#{userId}
+	</select>
+	<insert id="insertAdvice" parameterType="Advice" >
+	insert into t_advice (adv_content,adv_time,user_id) values(#{content},now(),#{userId})
+	</insert>
+        
+     <select id="findAdeviceById" resultMap="adviceResult" resultType="Advice" parameterType="int">
+     select advice_id,adv_content,adv_time,user_id from t_advice where advice_id=#{id}
+	</select>
+	<update id="updateAdvice" parameterType="Advice">
+	update t_advice set adv_content=#{content} where advice_id=#{id}
+	</update>
+	<delete id="deleteAdvice" parameterType="int">
+	delete from  t_advice where advice_id=#{id}
+	</delete>
+</mapper>

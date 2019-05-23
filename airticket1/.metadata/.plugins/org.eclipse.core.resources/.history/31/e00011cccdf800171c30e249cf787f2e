@@ -1,0 +1,41 @@
+package com.isoftstone.airticket.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.isoftstone.airticket.bean.OrderInfo;
+import com.isoftstone.airticket.repository.AirLineDao;
+import com.isoftstone.airticket.repository.OrderDao;
+import com.isoftstone.airticket.service.OrderService;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+
+	@Autowired
+	private OrderDao orderDao;
+	@Autowired
+	private AirLineDao airLineDao;
+	
+	public void saveOrder(OrderInfo order) {
+		
+		
+		
+		int seatNo = 0;
+		
+		int seatCount = airLineDao.findAirLineById(order.getAirLineId()).getSeatCount();
+		
+		seatNo = (int)(Math.random()*seatCount+1);
+		order.setSeatNo(seatNo);
+		
+		orderDao.insertOrder(order);
+
+	}
+
+	public List<OrderInfo> queryOrderList(int userId) {
+		// TODO Auto-generated method stub
+		return orderDao.getOrderList(userId);
+	}
+
+}

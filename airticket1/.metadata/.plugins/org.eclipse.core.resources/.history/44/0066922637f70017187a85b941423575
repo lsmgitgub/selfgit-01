@@ -1,0 +1,17 @@
+package com.isoftstone.airticket.service.impl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.isoftstone.airticket.bean.AirLine;
+import com.isoftstone.airticket.service.AirLineService;
+@Service
+public class AirLineServiceImpl implements AirLineService{
+	
+	public List<AirLine> queryAirLine(AirLine airLineCondition) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

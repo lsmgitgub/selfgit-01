@@ -1,0 +1,14 @@
+package com.isoftstone.airticket.repository;
+
+import java.util.List;
+
+import com.isoftstone.airticket.bean.OrderInfo;
+
+public interface OrderDao {
+	
+	public void insertOrder(OrderInfo order);
+	
+	public List<OrderInfo> getOrderList(int userId);
+	
+
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.message.repository.ContractDao">
+
+	<resultMap type="Contract" id="ContractResult">
+		<id property="id" column="id" />
+		<result property="projectName" column="project_name" />
+		<result property="firstName" column="first_name" />
+		<result property="secondName" column="second_name" />
+		<result property="signedTime" column="signed_time" />
+		<result property="money" column="money" />
+		<result property="limitTime" column="limit_time" />
+		<result property="paymentMethod" column="payment_method" />
+		<result property="enteringPerson" column="entering_person" />
+	</resultMap>
+
+	<select id="" resultMap="ContractResult" resultType="Contract"
+		parameterType="Contract">
+		select * from t_contract
+	</select>
+	<insert id="addContract" parameterType="Contract">
+		insert into t_contract
+		values(#{id},#{projectName},#{firstName},#{secondName},#{signedTime},#{money},#{limitTime},#{paymentMethod},#{enteringPerson})
+	</insert>
+	<!-- insert into t_contract values(id,#{projectName},#{firstName},#{secondName},#{signedTime},#{money},#{limitTime},#{paymentMethod},#{enteringPerson}) -->
+</mapper>

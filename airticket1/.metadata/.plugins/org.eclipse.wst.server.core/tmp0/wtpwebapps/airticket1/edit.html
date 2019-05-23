@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+   
+    <!-- Custom styles for this template -->
+    <link href="css/main.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">飞天航空订票系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="${pageContext.request.contextPath}/userCenter.do?userId=${loginUser.id}">个人中心</a></li>
+            <li><a href="#">帮助中心</a></li>
+           <!--  <li><a href="#"></a></li>  -->
+            <li><a href="#">注销</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="firstmenu"><a href="#" >查询航班信息</a></li>          
+            <li  class="active"><a href="${pageContext.request.contextPath}/userCenter.do">我要订票</a></li>
+            <li><a href="${pageContext.request.contextPath}/realNameCheck.do?userId=${loginUser.id }">我的订单</a></li>
+			<li><a href="${pageContext.request.contextPath}/realNameCheck.do?userId=${loginUser.id }">投诉建议</a></li>
+          </ul>
+
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+          </ul>
+        </div>
+<!-- head end -->
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">注册系统</h1>
+          
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+	           <form class="form-horizontal"   id="ididentity" 
+	           action="${pageContext.request.contextPath}/doRealNameCheck.do" 
+	           method="post" enctype="multipart/form-data">
+	          <input type="hidden" name="user_id" value='${loginUser.id }'>
+	           <input type="hidden" name="id" value='${idIdentity.id }'>
+		    <fieldset>
+		      <div id="legend" class="">
+		        <legend class="">请输入注册信息</legend>
+		      </div>
+		    <div class="control-group">
+		
+		          <!-- Text input-->
+		          <label class="control-label" for="input01">用户名</label>
+		           <div class="controls">		          
+		             
+		            <input type="text" value="" name='userName' placeholder="用户名"  class="input-xlarge" >
+		             <span>用户名注册后不可修改</span>  
+		            </div> 		        
+		    </div>
+		
+		    <div class="control-group">
+		
+		          <!-- Text input-->
+		          <label class="control-label" for="input01">姓名</label>
+		         <div class="controls">
+		            <input type="text" name="real_name" value="" placeholder="请输入真实姓名" class="input-xlarge">
+		            <span >真实姓名保存后将不可修改</span>
+		         </div>
+		        </div>
+		
+		    <div class="control-group">
+		          <label class="control-label">性别</label>
+		          
+		      <!-- Inline Radios -->
+		     
+		        <input type="radio" value="0" name="sex" ${idIdentity.sex==0?"checked":"" }>
+		        男
+		     
+		        <input type="radio" value="1" name="sex" ${idIdentity.sex==1?"checked":"" }>
+		        女
+		    
+		
+		        </div><div class="control-group">
+		
+		          <!-- Text input-->
+		          <label class="control-label" for="input01">身份证号码</label>
+		          <div class="controls">
+		            <input type="text" name="id_card" value="${idIdentity.id_card }" placeholder="身份证号码" class="input-xlarge">
+		            <span>身份证号码为18位</span>
+		          </div>
+		        </div>
+		
+		    <div class="control-group">
+		
+		          <!-- Text input-->
+		          <label class="control-label" for="input01">出生日期</label>
+		          <div class="controls">
+		            
+		           <input type="text" name="birthday"  value="<fmt:formatDate value='${idIdentity.birthday}' pattern='yyyy-MM-dd'/>" placeholder="出生日期" class="input-xlarge">
+		            <span>身份证上的出生日期</span>
+		          </div>
+		        </div>
+		
+		    <div class="control-group">
+		
+		          <!-- Text input-->
+		          <label class="control-label" for="input01">证件地址</label>
+		          <div class="controls">
+		            <input type="text" name="card_address" value="${idIdentity.card_address }" placeholder="身份证上的证件地址" class="input-xlarge">
+		            <span>身份证证件地址，非现在居住地址</span>
+		          </div>
+		        </div>
+		
+		    <div class="control-group">
+		          <label class="control-label">身份证正面照片</label>
+		          <br>
+		<img src="${pageContext.request.contextPath}/${idIdentity.card_face }" width='200' height="100">
+		          <!-- File Upload -->
+		          <div class="controls">
+		            <input class="input-file" name="cardFaceImageFile" id="cardFaceImageFile" type="file">
+		          </div>
+		        </div>
+		
+		    <div class="control-group">
+		          <label class="control-label">身份证反面照片</label><br>
+		          <img src="${pageContext.request.contextPath}/${idIdentity.card_back }" width='200' height="100">
+		
+		          <!-- File Upload -->
+		          <div class="controls">
+		            <input class="input-file" name="cardBackImageFile" id="cardBackImageFile" type="file">
+		          </div>
+		        </div>
+		
+		    <div class="control-group">
+		          <label class="control-label"></label>
+		
+		          <!-- Button -->
+		          <div class="controls">
+		            <input type="submit" class="btn btn-primary" value="注册"/>
+		          </div>
+		        </div>
+		
+		    </fieldset>
+		  </form>
+            </div>
+                  
+        </div>
+				<!-- footer begin -->
+		
+		      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

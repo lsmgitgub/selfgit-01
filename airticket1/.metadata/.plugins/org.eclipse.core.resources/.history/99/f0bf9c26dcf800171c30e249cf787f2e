@@ -1,0 +1,33 @@
+
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+
+
+<%@ include file="head.jsp"%>
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<h1 class="page-header">帮助中心</h1>
+
+
+
+
+	<table width="100%" border="0">
+		<tr>
+			<td>如何购票？&nbsp;</td>
+			
+		</tr>
+		<tr>
+			<td>想怎么购怎么购&nbsp;</td>
+			
+		</tr>
+		
+		<tr>
+			<td>如何操作？&nbsp;</td>
+			
+		</tr>
+		<tr>
+			<td>我是谁我在哪&nbsp;</td>
+			
+		</tr>
+	</table>
+
+
+	<%@ include file="footer.jsp"%>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isoftstone.airticket.repository.UserDao">
+
+    <resultMap type="AirLine" id="airLineResult">
+        <id property="id" column="air_line_id"/>
+        <result property="startTime" column="start_time"/>
+        <result property="password" column="password"/>  
+        <result property="realName" column="real_Name"/> 
+        <result property="idCode" column="id_code"/>  
+        <result property="telPhone" column="phone"/>      
+        <result property="email" column="email"/>   
+        <result property="role" column="user_role"/>       
+    </resultMap>
+    
+     <select id="findAirLine" resultMap="adviceResult" resultType="AirLine" parameterType="AirLine">
+     
+	</select>
+</mapper>

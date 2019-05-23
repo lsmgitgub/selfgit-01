@@ -1,0 +1,9 @@
+package com.isoftstone.airticket.service;
+
+import java.util.List;
+
+import com.isoftstone.airticket.bean.AirLine;
+
+public interface AirLineService {
+		public List<AirLine> queryAirLine(AirLine airLineCondition);
+}

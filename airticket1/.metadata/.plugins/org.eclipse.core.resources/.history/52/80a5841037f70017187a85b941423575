@@ -1,0 +1,7 @@
+package com.isoftstone.airticket.service.impl;
+
+import com.isoftstone.airticket.service.AirLineService;
+
+public class AirLineServiceImpl implements AirLineService{
+	
+}

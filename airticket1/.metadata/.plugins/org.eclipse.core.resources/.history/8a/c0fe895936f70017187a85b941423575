@@ -1,0 +1,5 @@
+package com.isoftstone.airticket.controller;
+
+public class AirLineColler {
+
+}

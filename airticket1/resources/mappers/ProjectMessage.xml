@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.message.repository.ProjectMessageDao">
+
+	<resultMap type="ProjectMessage" id="ProjectMessageResult">
+		<id property="id" column="id" />
+		<result property="projectName" column="project_name" />
+		<result property="arriveDate" column="arrive_data" />
+		<result property="beginDate" column="begin_date" />
+		<result property="completionDate" column="completion_date" />
+		<result property="acceptanceDate" column="acceptance_date" />
+
+	</resultMap>
+
+
+	<insert id="addDate" parameterType="ProjectMessage">
+		insert into projectmessage
+		values(#{id},#{projectName},#{arriveDate},#{beginDate},#{completionDate},#{acceptanceDate});
+	</insert>
+	
+</mapper>

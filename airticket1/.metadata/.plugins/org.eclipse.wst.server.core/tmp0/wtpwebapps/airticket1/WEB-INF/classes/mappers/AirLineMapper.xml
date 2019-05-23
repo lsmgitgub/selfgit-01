@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.isoftstone.airticket.repository.AirLineDao">
+
+    <resultMap type="AirLine" id="airLineResult">
+        <id property="id" column="air_line_id"/>
+        <result property="startTime" column="start_time"/>
+        <result property="endTime" column="end_time"/>  
+        <result property="fromCity" column="from_city"/> 
+        <result property="toCity" column="to_city"/> 
+        <result property="seatCount" column="seat_count"/> 
+      <result property="price" column="ticket_price"/> 
+    </resultMap>
+    
+     <select id="findAirLine" resultMap="airLineResult" resultType="AirLine" parameterType="AirLine">
+     select air_line_id,start_time,end_time,from_city,to_city,seat_count,ticket_price from t_air_line where from_city=#{fromCity} and to_city=#{toCity}
+	</select>
+	<select id="findAirLineById" resultMap="airLineResult" resultType="AirLine" parameterType="int">
+     select air_line_id,start_time,end_time,from_city,to_city,seat_count,ticket_price from t_air_line where air_line_id=#{id}
+	</select>
+	
+	<!--
+	<insert id="insertAdvice" parameterType="Advice" >
+	insert into t_advice (adv_content,adv_time,user_id) values(#{content},now(),#{userId})
+	</insert>
+        
+     <select id="findAdeviceById" resultMap="adviceResult" resultType="Advice" parameterType="int">
+     select advice_id,adv_content,adv_time,user_id from t_advice where advice_id=#{id}
+	</select>
+	<update id="updateAdvice" parameterType="Advice">
+	update t_advice set adv_content=#{content} where advice_id=#{id}
+	</update>
+	<delete id="deleteAdvice" parameterType="int">
+	delete from  t_advice where advice_id=#{id}
+	</delete>
+	  -->
+</mapper>

@@ -1,0 +1,31 @@
+package com.isoftstone.airticket.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.isoftstone.airticket.bean.AirLine;
+import com.isoftstone.airticket.service.AirLineService;
+
+@Controller
+public class AirLineController {
+	@Autowired
+	private AirLineService airLineServiceImpl;
+	@RequestMapping("queryAirLine")
+	public String toQueryAirLine(Model model) {
+		System.out.println("to query air line ..........");
+		return "queryAirLine";
+	}
+	@RequestMapping("doQueryAirLine")
+	public String doQueryAirLine(Model model,@ModelAttribute("airLine") AirLine airLine) {
+		System.out.println(airLine);
+		List<AirLine> airLines=airLineServiceImpl.queryAirLine(airLine);
+		System.out.println(airLines.size());
+		model.addAttribute("airLines".airLine)
+	}
+
+}
